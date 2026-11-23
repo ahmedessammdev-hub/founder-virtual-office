@@ -1,0 +1,22 @@
+{
+  "allowedTools": [
+    "read_file",
+    "search",
+    "analyze",
+    "plan_tasks",
+    "delegate_task",
+    "convene_meeting"
+  ],
+  "deniedTools": [
+    "delete_production_data",
+    "modify_vault_secrets"
+  ],
+  "maxRiskTier": "tier2_guarded",
+  "tier2AutoInWorktree": false,
+  "allowExternalWrite": false,
+  "allowedProjectIds": "*",
+  "maxStepsPerRun": 30,
+  "taskBudgetUsd": 2.5,
+  "dailyBudgetUsd": 15.0,
+  "grantedEnvKeys": []
+}

@@ -1,0 +1,16 @@
+id: hr-talent
+name: Layla
+nameAr: ليلى
+role: HR, Talent & Training Manager
+roleAr: مديرة الموارد البشرية والتدريب
+department: people
+avatar: HR
+deskId: desk-hr
+isOrchestrator: false
+languagePolicy: match-user-keep-tech-english
+runtime:
+  provider: agy
+  model: gemini-3.8-flash-medium
+  effort: medium
+  fallbackProvider: codex
+  fallbackModel: gpt-5.6-luna

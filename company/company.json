@@ -1,0 +1,166 @@
+{
+  "name": "Founder Virtual Office",
+  "nameAr": "المكتب الافتراضي للمؤسس",
+  "languagePolicy": "match-user-keep-tech-english",
+  "departments": [
+    {
+      "id": "executive",
+      "name": "Executive & Orchestration",
+      "nameAr": "الإدارة والتنسيق",
+      "color": "#6366f1"
+    },
+    {
+      "id": "people",
+      "name": "HR & Talent",
+      "nameAr": "الموارد البشرية والتدريب",
+      "color": "#ec4899"
+    },
+    {
+      "id": "engineering",
+      "name": "Engineering",
+      "nameAr": "الهندسة والبرمجة",
+      "color": "#10b981"
+    },
+    {
+      "id": "product",
+      "name": "Product & Strategy",
+      "nameAr": "المنتجات والاستراتيجية",
+      "color": "#f59e0b"
+    },
+    {
+      "id": "growth",
+      "name": "Growth & Content",
+      "nameAr": "التسويق والمحتوى",
+      "color": "#06b6d4"
+    }
+  ],
+  "budgets": {
+    "defaultTaskBudgetUsd": 1.5,
+    "defaultDailyBudgetUsd": 15,
+    "providerDailyCapsUsd": {
+      "agy": 25,
+      "codex": 25,
+      "claude": 25,
+      "gemini_api": 15,
+      "openai_api": 15,
+      "anthropic_api": 15,
+      "openrouter_api": 15
+    },
+    "maxConcurrentRuns": 2,
+    "defaultRunTimeoutMs": 300000,
+    "allowPaidFallback": false
+  },
+  "security": {
+    "enabled": true,
+    "domainAllowlist": [
+      "github.com",
+      "api.github.com",
+      "docs.github.com",
+      "npmjs.com",
+      "developer.mozilla.org"
+    ],
+    "maxResponseBytes": 262144
+  },
+  "memory": {
+    "vectorEnabled": false,
+    "embeddingProvider": "ollama",
+    "embeddingModel": "nomic-embed-text",
+    "ollamaBaseUrl": "http://127.0.0.1:11434",
+    "ftsWeight": 0.6,
+    "vectorWeight": 0.4,
+    "decayHalfLifeDays": 60,
+    "rollingSummaryEveryMessages": 8
+  },
+  "telegram": {
+    "enabled": false,
+    "allowedChatIds": [],
+    "defaultEmployeeId": "general-manager",
+    "notifyApprovals": true,
+    "notifyRunCompletion": true,
+    "pollIntervalMs": 4000
+  },
+  "floorplan": {
+    "width": 1200,
+    "height": 760,
+    "theme": "sunlit_studio",
+    "zones": [
+      {
+        "id": "manager-office",
+        "name": "Executive Office",
+        "nameAr": "مكتب الإدارة",
+        "kind": "manager_office",
+        "x": 40,
+        "y": 40,
+        "width": 340,
+        "height": 280
+      },
+      {
+        "id": "meeting-room",
+        "name": "Board & Meeting Room",
+        "nameAr": "غرفة الاجتماعات",
+        "kind": "meeting_room",
+        "x": 40,
+        "y": 360,
+        "width": 340,
+        "height": 360
+      },
+      {
+        "id": "workstations",
+        "name": "Open Workstations",
+        "nameAr": "منطقة فرق العمل",
+        "kind": "workstations",
+        "x": 420,
+        "y": 40,
+        "width": 740,
+        "height": 440
+      },
+      {
+        "id": "lounge",
+        "name": "Lounge & Sync",
+        "nameAr": "منطقة الاستراحة",
+        "kind": "lounge",
+        "x": 420,
+        "y": 520,
+        "width": 740,
+        "height": 200
+      }
+    ],
+    "desks": [
+      {
+        "id": "desk-gm",
+        "zoneId": "manager-office",
+        "x": 160,
+        "y": 140,
+        "employeeId": "general-manager"
+      },
+      {
+        "id": "desk-hr",
+        "zoneId": "workstations",
+        "x": 500,
+        "y": 130,
+        "employeeId": "hr-talent"
+      },
+      {
+        "id": "desk-eng",
+        "zoneId": "workstations",
+        "x": 760,
+        "y": 130,
+        "employeeId": "senior-engineer"
+      },
+      {
+        "id": "desk-product",
+        "zoneId": "workstations",
+        "x": 500,
+        "y": 310,
+        "employeeId": "product-strategist"
+      },
+      {
+        "id": "desk-growth",
+        "zoneId": "workstations",
+        "x": 760,
+        "y": 310,
+        "employeeId": "growth-marketer"
+      }
+    ]
+  }
+}

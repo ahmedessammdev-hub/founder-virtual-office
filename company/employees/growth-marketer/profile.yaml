@@ -1,0 +1,16 @@
+id: growth-marketer
+name: Mona
+nameAr: منى
+role: Growth & Content Marketer
+roleAr: مسوّقة نمو ومحتوى
+department: growth
+avatar: GMK
+deskId: desk-growth
+isOrchestrator: false
+languagePolicy: match-user-keep-tech-english
+runtime:
+  provider: agy
+  model: gemini-3.8-flash-medium
+  effort: medium
+  fallbackProvider: codex
+  fallbackModel: gpt-5.6-luna

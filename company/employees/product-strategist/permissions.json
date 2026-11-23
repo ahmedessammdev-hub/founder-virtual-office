@@ -1,0 +1,23 @@
+{
+  "allowedTools": [
+    "read_file",
+    "search",
+    "analyze",
+    "draft_prd",
+    "competitive_research"
+  ],
+  "deniedTools": [
+    "shell_exec",
+    "git_push",
+    "send_email",
+    "write_project_code"
+  ],
+  "maxRiskTier": "tier1_auto",
+  "tier2AutoInWorktree": false,
+  "allowExternalWrite": false,
+  "allowedProjectIds": "*",
+  "maxStepsPerRun": 25,
+  "taskBudgetUsd": 1.25,
+  "dailyBudgetUsd": 8.0,
+  "grantedEnvKeys": []
+}

@@ -1,0 +1,22 @@
+{
+  "allowedTools": [
+    "read_file",
+    "search",
+    "write_file_worktree",
+    "run_tests",
+    "git_diff"
+  ],
+  "deniedTools": [
+    "send_email",
+    "publish_content",
+    "delete_project"
+  ],
+  "maxRiskTier": "tier2_guarded",
+  "tier2AutoInWorktree": true,
+  "allowExternalWrite": false,
+  "allowedProjectIds": "*",
+  "maxStepsPerRun": 40,
+  "taskBudgetUsd": 2.0,
+  "dailyBudgetUsd": 12.0,
+  "grantedEnvKeys": []
+}

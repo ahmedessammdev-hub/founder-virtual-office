@@ -1,0 +1,16 @@
+id: general-manager
+name: Rami
+nameAr: رامي
+role: General Manager & Orchestrator
+roleAr: المدير العام ومنسق الفريق
+department: executive
+avatar: GM
+deskId: desk-gm
+isOrchestrator: true
+languagePolicy: match-user-keep-tech-english
+runtime:
+  provider: agy
+  model: gemini-4-neon-medium
+  effort: high
+  fallbackProvider: codex
+  fallbackModel: gpt-5.6-luna

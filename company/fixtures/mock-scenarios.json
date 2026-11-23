@@ -1,0 +1,114 @@
+{
+  "scenarios": {
+    "default": {
+      "match": ["*"],
+      "steps": [
+        { "type": "status", "status": "analyzing", "detail": "جاري قراءة سياق المشروع والذاكرة..." },
+        { "type": "thinking", "text": "Evaluating task requirements against active project boundaries and employee skills." },
+        {
+          "type": "tool_call",
+          "toolName": "read_file",
+          "args": { "path": "README.md" },
+          "riskTier": "tier1_auto"
+        },
+        {
+          "type": "tool_result",
+          "toolName": "read_file",
+          "success": true,
+          "outputPreview": "Project structure verified. Ready to produce deliverable."
+        },
+        { "type": "text_delta", "text": "تم فحص سياق المهمة بنجاح. " },
+        { "type": "text_delta", "text": "الخطة المقترحة والتنفيذ تم التحقق منهما عبر MockAdapter بدون استهلاك API خارجي." },
+        { "type": "usage", "inputTokens": 420, "outputTokens": 180, "costUsd": 0.0024 },
+        { "type": "done", "finalOutput": "تم فحص سياق المهمة بنجاح. الخطة المقترحة والتنفيذ تم التحقق منهما عبر MockAdapter بدون استهلاك API خارجي." }
+      ]
+    },
+    "approval": {
+      "match": ["__scenario:approval__", "git push", "send email", "deploy", "publish", "ابعت ايميل", "ارفع الكود"],
+      "steps": [
+        { "type": "status", "status": "planning", "detail": "تم تجهيز التعديل وجاري طلب الموافقة..." },
+        {
+          "type": "tool_call",
+          "toolName": "git_diff",
+          "args": { "branch": "vo/senior-engineer/mock" },
+          "riskTier": "tier1_auto"
+        },
+        {
+          "type": "tool_result",
+          "toolName": "git_diff",
+          "success": true,
+          "outputPreview": "1 file changed, 14 insertions(+)"
+        },
+        {
+          "type": "approval_requested",
+          "actionType": "git_push",
+          "riskTier": "tier3_approval",
+          "title": "موافقة مطلوبة: دفع التعديلات إلى Git Remote",
+          "summary": "الموظف يطلب موافقتك لتنفيذ git push على فرع المراجعة بعد التحقق من الاختبارات.",
+          "payload": {
+            "command": "git push origin vo/senior-engineer/mock",
+            "branch": "vo/senior-engineer/mock"
+          },
+          "diffPreview": "diff --git a/src/index.ts b/src/index.ts\n+export const verified = true;"
+        },
+        { "type": "usage", "inputTokens": 510, "outputTokens": 210, "costUsd": 0.0031 }
+      ]
+    },
+    "tainted_approval": {
+      "match": ["__scenario:tainted_approval__"],
+      "steps": [
+        { "type": "status", "status": "inspecting_external", "detail": "تحليل بيانات خارجية غير موثوقة..." },
+        {
+          "type": "approval_requested",
+          "actionType": "send_email",
+          "riskTier": "tier3_approval",
+          "title": "إرسال بريد بناءً على محتوى خارجي",
+          "summary": "تم رصد طلب إجراء حساس أثناء معالجة محتوى خارجي.",
+          "payload": {
+            "to": "partner@example.com",
+            "subject": "Follow-up"
+          }
+        },
+        { "type": "usage", "inputTokens": 300, "outputTokens": 90, "costUsd": 0.0015 }
+      ]
+    },
+    "loop": {
+      "match": ["__scenario:loop__", "trigger loop"],
+      "steps": [
+        { "type": "status", "status": "running", "detail": "تشغيل أداة الفحص..." },
+        { "type": "tool_call", "toolName": "run_tests", "args": { "suite": "unit" }, "riskTier": "tier1_auto" },
+        { "type": "tool_result", "toolName": "run_tests", "success": false, "outputPreview": "Assertion failed" },
+        { "type": "tool_call", "toolName": "run_tests", "args": { "suite": "unit" }, "riskTier": "tier1_auto" },
+        { "type": "tool_result", "toolName": "run_tests", "success": false, "outputPreview": "Assertion failed" },
+        { "type": "tool_call", "toolName": "run_tests", "args": { "suite": "unit" }, "riskTier": "tier1_auto" },
+        { "type": "tool_result", "toolName": "run_tests", "success": false, "outputPreview": "Assertion failed" },
+        { "type": "done", "finalOutput": "Should not reach here due to loop breaker" }
+      ]
+    },
+    "budget_overrun": {
+      "match": ["__scenario:budget_overrun__", "trigger budget"],
+      "steps": [
+        { "type": "status", "status": "running", "detail": "تحليل موسع..." },
+        { "type": "usage", "inputTokens": 120000, "outputTokens": 40000, "costUsd": 2.4 },
+        { "type": "text_delta", "text": "This chunk should be aborted by mid-flight budget governor." },
+        { "type": "usage", "inputTokens": 120000, "outputTokens": 40000, "costUsd": 2.4 },
+        { "type": "done", "finalOutput": "Should not complete" }
+      ]
+    },
+    "slow": {
+      "match": ["__scenario:slow__", "slow task"],
+      "delayMs": 120,
+      "steps": [
+        { "type": "status", "status": "running", "detail": "خطوة 1/8..." },
+        { "type": "text_delta", "text": "الخطوة 1... " },
+        { "type": "text_delta", "text": "الخطوة 2... " },
+        { "type": "text_delta", "text": "الخطوة 3... " },
+        { "type": "text_delta", "text": "الخطوة 4... " },
+        { "type": "text_delta", "text": "الخطوة 5... " },
+        { "type": "text_delta", "text": "الخطوة 6... " },
+        { "type": "usage", "inputTokens": 200, "outputTokens": 100, "costUsd": 0.001 },
+        { "type": "done", "finalOutput": "اكتملت المهمة البطيئة." }
+      ]
+    }
+  }
+}
