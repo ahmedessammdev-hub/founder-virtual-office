@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="ASO AI HQ">
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="#111113" stroke="#2B2B31" stroke-width="3" />
+  <path d="M64 26 L98 46 L64 66 L30 46 Z" fill="#D4A853" />
+  <path d="M30 46 L64 66 L64 102 L30 82 Z" fill="#27272D" />
+  <path d="M98 46 L64 66 L64 102 L98 82 Z" fill="#1A1A1E" />
+  <path d="M64 26 L98 46 L98 82 L64 102 L30 82 L30 46 Z" fill="none" stroke="#D4A853" stroke-opacity="0.45" stroke-width="2" />
+  <circle cx="64" cy="46" r="5" fill="#111113" />
+</svg>

@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --studio-ground: 248 247 244;
+  --studio-blueprint: 243 241 236;
+  --studio-surface: 255 255 255;
+  --studio-subtle: 240 238 233;
+  --studio-border: 229 226 220;
+  --studio-border-strong: 204 199 190;
+  --studio-ink: 17 17 19;
+  --studio-muted: 92 92 98;
+  --studio-faint: 122 122 130;
+  --studio-accent: 176 122 31;
+  --studio-accent-soft: 248 241 227;
+  --studio-emerald: 21 128 91;
+  --studio-emerald-soft: 230 245 239;
+  --studio-amber: 180 105 14;
+  --studio-amber-soft: 254 243 224;
+  --studio-crimson: 190 48 56;
+  --studio-crimson-soft: 253 236 236;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --studio-ground: 9 9 11;
+  --studio-blueprint: 12 12 15;
+  --studio-surface: 17 17 19;
+  --studio-subtle: 24 24 27;
+  --studio-border: 31 31 35;
+  --studio-border-strong: 50 50 58;
+  --studio-ink: 244 244 246;
+  --studio-muted: 161 161 170;
+  --studio-faint: 113 113 122;
+  --studio-accent: 212 168 83;
+  --studio-accent-soft: 38 31 18;
+  --studio-emerald: 52 211 153;
+  --studio-emerald-soft: 16 40 31;
+  --studio-amber: 245 158 11;
+  --studio-amber-soft: 46 33 12;
+  --studio-crimson: 248 113 113;
+  --studio-crimson-soft: 49 20 24;
+}
+
+@layer base {
+  html {
+    font-family: "IBM Plex Sans Arabic", "Inter", system-ui, sans-serif;
+    letter-spacing: -0.005em;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.studio-grid-bg {
+  background-color: rgb(var(--studio-blueprint));
+  background-image: radial-gradient(rgb(var(--studio-border-strong) / 0.55) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.studio-glass {
+  background-color: rgb(var(--studio-surface) / 0.86);
+  backdrop-filter: blur(14px);
+}
+
+html[data-reduced-motion="true"] *,
+html[data-reduced-motion="true"] *::before,
+html[data-reduced-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+@keyframes pulseRing {
+  0%,
+  100% {
+    opacity: 0.88;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.1);
+  }
+}
+
+.animate-status-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulseRing 2.2s ease-in-out infinite;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--studio-border-strong));
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--studio-muted));
+}
